@@ -8,22 +8,31 @@ console.log("Here's the data you're working with");
 console.log({ CATEGORIES, TASKS });
 
 function App() {
+    const [tasks, setTasks] = useState(TASKS)
+    const [selectedCategory, setSelectedCategory] = useState("All")
 
-  const [tasks, setTasks] = useState(TASKS)
+    
+    const deleteTask = (task) => {
+      const taskList = tasks.filter((t)=> t !== task )
+    setTasks(taskList)
+    }
+    
+    const filteredTasks = selectedCategory === "All"
+      ? tasks : tasks.filter(task => task.category === selectedCategory)
+  
 
-  const deleteTask = (id) => {
-    console.log("Jam!!")
-    const task = tasks.filter((task)=> task.id !== id )
-    setTasks(task)
-  }
   
 
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter />
+      <CategoryFilter 
+        categories={CATEGORIES}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+        />
       <NewTaskForm />
-      <TaskList tasks={TASKS} deleteTask={deleteTask} />
+      <TaskList tasks={filteredTasks} deleteTask={deleteTask} />
     </div>
   );
 }
