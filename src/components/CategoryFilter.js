@@ -5,13 +5,12 @@ function CategoryFilter({categories, selectedCategory, setSelectedCategory}) {
     <div className="categories">
       <h5>Category filters</h5>
       {categories.map((category) => (
-        <button 
-          key={category}
-          className={selectedCategory === category ? "selected" : ""}
-          onClick={()=> setSelectedCategory(category)}
-          
-          >
-
+        <button key={category} 
+                name={category} 
+                onClick={()=> setSelectedCategory(category)}
+                class={selectedCategory === category ? "Selected" : ""}
+                >
+        {selectedCategory === category ? category : category}
         </button>
       ))}
     </div>
