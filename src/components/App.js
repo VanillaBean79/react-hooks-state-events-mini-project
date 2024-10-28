@@ -21,7 +21,9 @@ function App() {
       ? tasks : tasks.filter(task => task.category === selectedCategory)
   
 
-  
+    const addTask = (task) => {
+      setTasks([...tasks, task])
+    }
 
   return (
     <div className="App">
@@ -31,7 +33,9 @@ function App() {
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
         />
-      <NewTaskForm />
+      <NewTaskForm 
+        categories={CATEGORIES}
+        />
       <TaskList tasks={filteredTasks} deleteTask={deleteTask} />
     </div>
   );
