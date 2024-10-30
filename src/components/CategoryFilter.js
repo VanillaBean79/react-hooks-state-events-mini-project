@@ -8,7 +8,7 @@ function CategoryFilter({categories, selectedCategory, setSelectedCategory}) {
         <button key={category} 
                 name={category} 
                 onClick={()=> setSelectedCategory(category)}
-                className={selectedCategory === category ? "Selected" : ""}
+                className={selectedCategory === category ? "selected" : ""}
                 >
         {selectedCategory === category ? category : category}
         </button>
